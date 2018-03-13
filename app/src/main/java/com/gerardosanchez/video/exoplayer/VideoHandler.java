@@ -42,9 +42,10 @@ public class VideoHandler implements Player.EventListener {
     private VideoHandler() {
     }
 
-    public void setPlayerForUri(Context context, Uri uri, SurfaceView playerView) {
+    public void setPlayerForUri(Context context, Uri uri, SurfaceView playerView, VideoHandler.EventListener eventListener) {
         if (context != null && uri != null) {
             mContext = context;
+            addListener(eventListener);
             if (!uri.equals(mVideoUri) && player == null) {
                 mPlayerView = playerView;
                 mVideoUri = uri;
@@ -149,12 +150,12 @@ public class VideoHandler implements Player.EventListener {
      */
     @Override
     public void onLoadingChanged(boolean isLoading) {
-        eventListener.onLoadingChange(mContext, isLoading);
+        eventListener.onLoadingChange(isLoading);
     }
 
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-        eventListener.onPlayerStateChanged(mContext, playWhenReady, playbackState);
+        eventListener.onPlayerStateChanged(playWhenReady, playbackState);
     }
 
     @Override
@@ -189,8 +190,8 @@ public class VideoHandler implements Player.EventListener {
     //endregion events
 
     public interface EventListener {
-        void onLoadingChange(Context context, boolean isLoading);
+        void onLoadingChange(boolean isLoading);
 
-        void onPlayerStateChanged(Context context, boolean playWhenReady, int playbackState);
+        void onPlayerStateChanged(boolean playWhenReady, int playbackState);
     }
 }

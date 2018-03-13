@@ -27,13 +27,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.gerardosanchez.video.R;
-import com.gerardosanchez.video.activity.ExoPlayerActivity;
 import com.gerardosanchez.video.activity.FullscreenVideoActivity;
 import com.gerardosanchez.video.exoplayer.VideoHandler;
 
 import java.io.InputStream;
+import java.util.List;
 
-public class ExoPlayerFragment extends Fragment implements View.OnClickListener, VideoHandler.EventListener {
+public class PlayerFragment extends Fragment implements View.OnClickListener, VideoHandler.EventListener {
     public static final String FRAGMENT_IN_FULL_SCREEN_ACTIVITY = "FRAGMENT_IN_FULL_SCREEN_ACTIVITY";
     public static final String FULL_SCREEN_ACTIVITY = "FULL_SCREEN_ACTIVITY";
     public static final String ASPECT_RATIO = "ASPECT_RATIO";
@@ -51,21 +51,23 @@ public class ExoPlayerFragment extends Fragment implements View.OnClickListener,
     private boolean mFullScreenActivity;
     private boolean mFragmentInFullScreenActivity;
     private boolean mFromFullScreenActivity;
+    private List<View> mViews;
 
-    public ExoPlayerFragment() {
+    public PlayerFragment() {
         // Required empty public constructor
     }
 
-    public static ExoPlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri) {
-        return ExoPlayerFragment.newInstance(aspectRatio, videoUri, imgUri, false, true);
+    public static PlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri, List<View> views) {
+        return PlayerFragment.newInstance(aspectRatio, videoUri, imgUri, false, false, views);
     }
 
-    public static ExoPlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri, boolean fullScreenActivity) {
-        return ExoPlayerFragment.newInstance(aspectRatio, videoUri, imgUri, fullScreenActivity, false);
+    public static PlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri) {
+        return PlayerFragment.newInstance(aspectRatio, videoUri, imgUri, true, false, null);
     }
 
-    public static ExoPlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri, boolean fullScreenActivity, boolean fragmentInFullScreenActivity) {
-        ExoPlayerFragment fragment = new ExoPlayerFragment();
+    protected static PlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri, boolean fullScreenActivity, boolean fragmentInFullScreenActivity, List<View> views) {
+        PlayerFragment fragment = new PlayerFragment();
+        fragment.mViews = views;
         VideoHandler.getInstance().addListener(fragment);
         Bundle args = new Bundle();
         args.putBoolean(FRAGMENT_IN_FULL_SCREEN_ACTIVITY, fragmentInFullScreenActivity);
@@ -137,7 +139,7 @@ public class ExoPlayerFragment extends Fragment implements View.OnClickListener,
         super.onViewCreated(view, savedInstanceState);
         VideoHandler.getInstance().setPlayerForUri(
                 getContext(),
-                mVideoUri, mPlayerView);
+                mVideoUri, mPlayerView, this);
     }
 
     @Override
@@ -147,7 +149,7 @@ public class ExoPlayerFragment extends Fragment implements View.OnClickListener,
         if (mFromFullScreenActivity)
             VideoHandler.getInstance().setPlayerForUri(
                     getContext(),
-                    mVideoUri, mPlayerView);
+                    mVideoUri, mPlayerView, this);
 
         VideoHandler.getInstance().goToForeground();
     }
@@ -173,15 +175,23 @@ public class ExoPlayerFragment extends Fragment implements View.OnClickListener,
         if (mFullScreenActivity && !mFragmentInFullScreenActivity && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             mFromFullScreenActivity = true;
             goToFullScreenActivity();
+        } else {
+            if (mViews != null && mViews.size() > 0)
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+                    for (View view : mViews)
+                        view.setVisibility(View.GONE);
+                else
+                    for (View view : mViews)
+                        view.setVisibility(View.VISIBLE);
         }
     }
 
     public void goToFullScreenActivity() {
-        ExoPlayerActivity exoPlayerActivity = ((ExoPlayerActivity) getContext());
-        Intent intent = new Intent(exoPlayerActivity, FullscreenVideoActivity.class).setData(mVideoUri);
+        Activity activity = ((Activity) getContext());
+        Intent intent = new Intent(activity, FullscreenVideoActivity.class).setData(mVideoUri);
         intent.putExtra(VIDEO_URI, mVideoUri.toString());
         intent.putExtra(IMG_URI, mImgUri.toString());
-        exoPlayerActivity.startActivity(intent);
+        activity.startActivity(intent);
     }
     //region implemetation
 
@@ -204,34 +214,36 @@ public class ExoPlayerFragment extends Fragment implements View.OnClickListener,
     }
 
     @Override
-    public void onLoadingChange(Context context, boolean isLoading) {
-        if (isLoading)
-            mProgressBar.setVisibility(View.VISIBLE);
-        else
-            mProgressBar.setVisibility(View.GONE);
+    public void onLoadingChange(boolean isLoading) {
+        if (isAdded())
+            if (isLoading)
+                mProgressBar.setVisibility(View.VISIBLE);
+            else
+                mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
-    public void onPlayerStateChanged(Context context, boolean playWhenReady, int playbackState) {
+    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
 
-        switch (playbackState) {
-            case com.google.android.exoplayer2.Player.STATE_READY:
-                if (playWhenReady) {
-                    mIcPlayPause.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pause));
-                    ((Activity)context).findViewById(R.id.player_relative).setVisibility(View.GONE);
-                } else
-                    mIcPlayPause.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_play));
-                break;
-            case com.google.android.exoplayer2.Player.STATE_BUFFERING:
-                if (playWhenReady) {
-                    mIcPlayPause.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pause));
-                    ((Activity)context).findViewById(R.id.player_relative).setVisibility(View.GONE);
-                } else
-                    mIcPlayPause.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_play));
-                break;
-            default:
-                break;
-        }
+        if (isAdded())
+            switch (playbackState) {
+                case com.google.android.exoplayer2.Player.STATE_READY:
+                    if (playWhenReady) {
+                        mIcPlayPause.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_pause));
+                        getView().findViewById(R.id.player_relative).setVisibility(View.GONE);
+                    } else
+                        mIcPlayPause.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_play));
+                    break;
+                case com.google.android.exoplayer2.Player.STATE_BUFFERING:
+                    if (playWhenReady) {
+                        mIcPlayPause.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_pause));
+                        getView().findViewById(R.id.player_relative).setVisibility(View.GONE);
+                    } else
+                        mIcPlayPause.setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_play));
+                    break;
+                default:
+                    break;
+            }
     }
 
     //endregion implemetation

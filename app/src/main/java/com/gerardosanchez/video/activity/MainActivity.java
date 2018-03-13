@@ -27,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnexoplayer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ExoPlayerActivity.class).setData(Uri.parse("http://ws.mobile.terra.com/Descargas/Storage/000000000/055000/055528/ESPN20180301201538_1920x1080_.mp4")));
+                startActivity(new Intent(MainActivity.this, ExoPlayerActivity.class).putExtra("f", 1));
+            }
+        });
+
+        findViewById(R.id.btnexoplayerfullscreenactivity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ExoPlayerActivity.class).putExtra("f", 2));
             }
         });
 

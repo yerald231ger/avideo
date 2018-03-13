@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.gerardosanchez.video.R;
-import com.gerardosanchez.video.fragment.ExoPlayerFragment;
+import com.gerardosanchez.video.fragment.PlayerFragment;
 
 public class FullscreenVideoActivity extends AppCompatActivity {
 
@@ -21,14 +21,14 @@ public class FullscreenVideoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        ExoPlayerFragment videoFragment = ExoPlayerFragment.newInstance(
-                intent.getDoubleExtra(ExoPlayerFragment.ASPECT_RATIO, 0.5625),
-                intent.getStringExtra(ExoPlayerFragment.VIDEO_URI),
-                intent.getStringExtra(ExoPlayerFragment.IMG_URI),
+        PlayerFragment videoFragment = InternalPlayerFragment.newInternal(
+                intent.getDoubleExtra(PlayerFragment.ASPECT_RATIO, 0.5625),
+                intent.getStringExtra(PlayerFragment.VIDEO_URI),
+                intent.getStringExtra(PlayerFragment.IMG_URI),
                 false,
                 true);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frmExoPlayer_video, videoFragment, "PlayerFragment").commit();
+        ft.replace(R.id.frmExoPlayer_video, videoFragment, "InternalPlayerFragment").commit();
     }
 
     @Override
@@ -38,17 +38,17 @@ public class FullscreenVideoActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
     }
 }
