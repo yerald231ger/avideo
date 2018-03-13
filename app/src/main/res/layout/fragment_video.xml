@@ -1,0 +1,120 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gerardosanchez.video.fragment.VideoFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="http://ws.mobile.terra.com..." />
+
+            <!-- TODO: Update blank fragment layout -->
+            <VideoView
+                android:id="@+id/vidvVideo_Video"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnVideo_play"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimary"
+                android:text="Play" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#1B1B1B" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="https://neo.terra.com..." />
+
+            <!-- TODO: Update blank fragment layout -->
+            <VideoView
+                android:id="@+id/vidvVideo_Video2"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnVideo_play2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimary"
+                android:text="Play" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#1B1B1B" />
+
+            <Button
+                android:id="@+id/btnVideo_Stop"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorAccent"
+                android:text="Stop" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#1B1B1B" />
+
+
+            <RelativeLayout
+                android:id="@+id/rlyVideo_VideoContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.gerardosanchez.video.mediaplayer.VideoView
+                    android:id="@+id/vv"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true" />
+
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="@android:style/Widget.Holo.ProgressBar.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
