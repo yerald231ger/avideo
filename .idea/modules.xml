@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\gerardo.sanchez\Documents\Android\app\appcreator-android-studio-TerraAppBaseLibrary\app\TerraAppBaseLibrary.iml" filepath="C:\Users\gerardo.sanchez\Documents\Android\app\appcreator-android-studio-TerraAppBaseLibrary\app\TerraAppBaseLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/avideo.iml" filepath="$PROJECT_DIR$/avideo.iml" />
       <module fileurl="file://$PROJECT_DIR$/player/player.iml" filepath="$PROJECT_DIR$/player/player.iml" />
-      <module fileurl="file://C:\Users\gerardo.sanchez\Documents\Android\app\tpush-sdk\tpush-sdk.iml" filepath="C:\Users\gerardo.sanchez\Documents\Android\app\tpush-sdk\tpush-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/video.iml" filepath="$PROJECT_DIR$/video.iml" />
     </modules>
   </component>
 </project>
