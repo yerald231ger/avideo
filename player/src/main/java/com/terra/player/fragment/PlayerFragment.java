@@ -106,7 +106,7 @@ public class PlayerFragment extends Fragment implements View.OnClickListener, Vi
         mPlayerView = view.findViewById(R.id.player_video);
         mMediaControlls = view.findViewById(R.id.player_mediacontroller);
         mIcRewind = mMediaControlls.findViewById(R.id.player_ic_rewind);
-        mIcPlayPause = mMediaControlls.findViewById(R.id.player_ic_playpuse);
+        mIcPlayPause = mMediaControlls.findViewById(R.id.player_ic_playpause);
         mIcForward = mMediaControlls.findViewById(R.id.player_ic_forward);
 
         view.setOnClickListener(new View.OnClickListener() {
