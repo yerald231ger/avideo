@@ -28,6 +28,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.terra.player.R;
+import com.terra.player.activity.Constants;
 import com.terra.player.activity.FullScreenVideoActivity;
 import com.terra.player.exoplayer.VideoHandler;
 
@@ -198,20 +199,19 @@ public class PlayerFragment extends Fragment implements View.OnClickListener, Vi
 
     @Override
     public void onClick(View view) {
-
-        switch (view.getId()) {
-//            case R.id.player_ic_rewind:
-//                VideoHandler.getInstance().Rewind();
-//                break;
-//            case R.id.player_ic_playpuse:
-//                if (VideoHandler.getInstance().isPlaying())
-//                    VideoHandler.getInstance().Pause();
-//                else
-//                    VideoHandler.getInstance().Start();
-//                break;
-//            case R.id.player_ic_forward:
-//                VideoHandler.getInstance().Forward();
-//                break;
+        switch (view.getTag().toString()) {
+            case Constants.REWIND:
+                VideoHandler.getInstance().Rewind();
+                break;
+            case Constants.PLAYPAUSE:
+                if (VideoHandler.getInstance().isPlaying())
+                    VideoHandler.getInstance().Pause();
+                else
+                    VideoHandler.getInstance().Start();
+                break;
+            case Constants.FORWARD:
+                VideoHandler.getInstance().Forward();
+                break;
         }
     }
 
