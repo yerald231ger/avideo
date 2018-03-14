@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1041998270363",
+    "firebase_url": "https://video-fdd23.firebaseio.com",
+    "project_id": "video-fdd23",
+    "storage_bucket": "video-fdd23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041998270363:android:2348f4e7de8bb942",
+        "android_client_info": {
+          "package_name": "com.gerardosanchez.video"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041998270363-bm2iiu3b3pajhp0bdj49vkn5fbs3tbht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfK2DXTy5pDV9BnY94vy3N_3dkW37aZsk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
