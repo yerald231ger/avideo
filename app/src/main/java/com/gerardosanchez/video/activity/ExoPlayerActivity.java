@@ -29,8 +29,15 @@ public class ExoPlayerActivity extends AppCompatActivity {
                     "http://ws.mobile.terra.com/Descargas/Storage/000000000/055000/055528/banner20170619190821_1440x810_.png");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frmExoPlayer_video, videoFragment, "InternalPlayerFragment").commit();
-        } else {
+        } else if (getIntent().getExtras().get("f").equals(1)) {
             PlayerFragment videoFragment = PlayerFragment.newInstance(0.5625,
+                    "http://lablatam2.terra.com.mx/test/videos/videoplayback.mp4",
+                    "http://ws.mobile.terra.com/Descargas/Storage/000000000/055000/055528/banner20170619190821_1440x810_.png",
+                    mViews);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frmExoPlayer_video, videoFragment, "InternalPlayerFragment").commit();
+        }else {
+            com.terra.player.fragment.PlayerFragment videoFragment = com.terra.player.fragment.PlayerFragment.newInstance(0.5625,
                     "http://lablatam2.terra.com.mx/test/videos/videoplayback.mp4",
                     "http://ws.mobile.terra.com/Descargas/Storage/000000000/055000/055528/banner20170619190821_1440x810_.png",
                     mViews);

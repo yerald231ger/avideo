@@ -28,6 +28,12 @@
             android:layout_height="wrap_content"
             android:text="exoplayer fullscreen activity"
             />
+        <Button
+            android:id="@+id/btnlibterraplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="exoplayer library"
+            />
 
         <FrameLayout
             android:id="@+id/frmVideo"

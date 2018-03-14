@@ -35,14 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.VideoViewActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity android:name=".activity.ExoPlayerActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity android:name=".activity.FullscreenVideoActivity"
+        <activity
+            android:name=".activity.VideoViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".activity.ExoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".activity.FullscreenVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/FullscreenTheme"
-            >
-
-        </activity>
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name=".activity.LibPlayerTerraActivity"></activity>
     </application>
 
 </manifest>

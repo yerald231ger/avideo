@@ -17,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.btnlibterraplayer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ExoPlayerActivity.class).putExtra("f", 3));
+            }
+        });
+
         findViewById(R.id.btnprotiposys).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ExoPlayerActivity.class).putExtra("f", 2));
             }
         });
-
 
 //        VideoFragment videoFragment = VideoFragment.newInstance("","");
 //

@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-
+    compile project(':player')
     compile 'com.google.android.exoplayer:exoplayer:2.7.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
