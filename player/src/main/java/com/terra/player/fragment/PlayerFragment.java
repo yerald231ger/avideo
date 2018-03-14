@@ -70,7 +70,6 @@ public class PlayerFragment extends Fragment implements View.OnClickListener, Vi
     protected static PlayerFragment newInstance(double aspectRatio, String videoUri, String imgUri, boolean fullScreenActivity, boolean fragmentInFullScreenActivity, List<View> views) {
         PlayerFragment fragment = new PlayerFragment();
         fragment.mViews = views;
-        VideoHandler.getInstance().addListener(fragment);
         Bundle args = new Bundle();
         args.putBoolean(FRAGMENT_IN_FULL_SCREEN_ACTIVITY, fragmentInFullScreenActivity);
         args.putBoolean(FULL_SCREEN_ACTIVITY, fullScreenActivity);
@@ -165,6 +164,8 @@ public class PlayerFragment extends Fragment implements View.OnClickListener, Vi
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if (!mFragmentInFullScreenActivity)
+            VideoHandler.getInstance().releaseVideoPlayer();
     }
 
     @Override

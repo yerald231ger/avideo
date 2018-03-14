@@ -50,7 +50,7 @@ public class VideoHandler implements Player.EventListener {
         if (context != null && uri != null) {
             mContext = context;
             addListener(eventListener);
-            if (!uri.equals(mVideoUri) && player == null) {
+            if (player == null) {
                 mPlayerView = playerView;
                 mVideoUri = uri;
 
