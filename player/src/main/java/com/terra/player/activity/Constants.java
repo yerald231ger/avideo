@@ -5,6 +5,7 @@ package com.terra.player.activity;
  */
 
 public class Constants {
+
     public static final String PLAYPAUSE = "playpause";
     public static final String REWIND = "rewind";
     public static final String FORWARD = "forward";
