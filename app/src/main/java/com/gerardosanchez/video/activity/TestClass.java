@@ -13,6 +13,10 @@ public class TestClass {
 
     public int s = 0;
 
+    public int getS() {
+        return s;
+    }
+
     @Override
     public String toString() {
         return super.toString();
