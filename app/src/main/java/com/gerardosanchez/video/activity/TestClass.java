@@ -9,7 +9,7 @@ import android.view.View;
  * Created by Gerardo.Sanchez on 15/03/2018.
  */
 
-public class TestClass extends Fragment {
+public class TestClass {
 
     public int s = 0;
 
@@ -17,14 +17,8 @@ public class TestClass extends Fragment {
         String ok = "";
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public TestClass(String t) {
+        String ok = t;
     }
 
     @Override
