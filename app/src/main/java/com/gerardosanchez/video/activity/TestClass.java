@@ -1,19 +1,26 @@
 package com.gerardosanchez.video.activity;
 
+import android.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 /**
  * Created by Gerardo.Sanchez on 15/03/2018.
  */
 
-public class TestClass {
+public class TestClass extends Fragment {
+
+    public int s  = 0;
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
