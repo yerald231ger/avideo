@@ -14,6 +14,7 @@ public class TestClass {
     public int s = 0;
 
     public int getS() {
+        int s = 2;
         return s;
     }
 
