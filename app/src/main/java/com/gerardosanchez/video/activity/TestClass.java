@@ -17,11 +17,6 @@ public class TestClass {
         return s;
     }
 
-    public int getS() {
-        int s = 2;
-        return s;
-    }
-
     @Override
     public String toString() {
         return super.toString();
