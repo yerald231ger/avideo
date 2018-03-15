@@ -13,10 +13,6 @@ public class TestClass {
 
     public int s = 0;
 
-    public TestClass() {
-        String ok = "";
-    }
-
     public TestClass(String t) {
         String ok = t;
     }
