@@ -17,6 +17,8 @@ public class TestClass extends Fragment {
         String ok = "";
     }
 
+    public void NoHagoNada(){}
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
