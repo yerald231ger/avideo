@@ -11,10 +11,10 @@ import android.view.View;
 
 public class TestClass {
 
-    public int s = 0000;
+    public int s = 999999;
 
     public int getS() {
-        return 123123;
+        return 999999;
     }
 
     @Override
