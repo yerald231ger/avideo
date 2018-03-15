@@ -11,7 +11,11 @@ import android.view.View;
 
 public class TestClass extends Fragment {
 
-    public int s  = 0;
+    public int s = 0;
+
+    public TestClass() {
+        String ok = "";
+    }
 
     @Override
     public void onDestroyView() {
