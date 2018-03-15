@@ -11,7 +11,7 @@ import android.view.View;
 
 public class TestClass {
 
-    public int s = 0;
+    public int s = 1231;
 
     public int getS() {
         return s;
