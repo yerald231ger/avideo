@@ -256,8 +256,8 @@ public class PlayerFragment extends Fragment implements View.OnClickListener, Vi
                 ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_view)).getLayoutParams()).weight = .2f;
                 ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_controls)).getLayoutParams()).weight = .8f;
             } else {
-                ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_view)).getLayoutParams()).weight = .3f;
-                ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_controls)).getLayoutParams()).weight = .7f;
+                ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_view)).getLayoutParams()).weight = .4f;
+                ((LinearLayout.LayoutParams) (mMediaControlls.findViewById(R.id.player_mediacontroller_controls)).getLayoutParams()).weight = .6f;
             }
     }
 
